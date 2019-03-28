@@ -29,6 +29,7 @@ import org.springframework.data.mongodb.core.schema.IdentifiableJsonSchemaProper
 import org.springframework.data.mongodb.core.schema.IdentifiableJsonSchemaProperty.UntypedJsonSchemaProperty;
 import org.springframework.data.mongodb.core.schema.TypedJsonSchemaObject.NumericJsonSchemaObject;
 import org.springframework.data.mongodb.core.schema.TypedJsonSchemaObject.ObjectJsonSchemaObject;
+import org.springframework.lang.Nullable;
 
 /**
  * A {@literal property} or {@literal patternProperty} within a {@link JsonSchemaObject} of {@code type : 'object'}.
@@ -217,6 +218,16 @@ public interface JsonSchemaProperty extends JsonSchemaObject {
 		 */
 		public IdentifiableJsonSchemaProperty<TypedJsonSchemaObject> ofType(Type type) {
 			return new IdentifiableJsonSchemaProperty<>(identifier, TypedJsonSchemaObject.of(type));
+		}
+
+		/**
+		 *
+		 * @param type
+		 * @return
+		 * @since 2.2
+		 */
+		public IdentifiableJsonSchemaProperty<TypedJsonSchemaObject> ofType(@Nullable Class<?> type) {
+			return new IdentifiableJsonSchemaProperty<>(identifier, JsonSchemaObject.of(type));
 		}
 
 		/**

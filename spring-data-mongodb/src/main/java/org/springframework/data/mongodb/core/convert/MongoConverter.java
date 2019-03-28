@@ -149,4 +149,6 @@ public interface MongoConverter
 			return convertToMongoType(id, null);
 		}
 	}
+
+	Class<?> computeWriteTarget(Class<?> source);
 }

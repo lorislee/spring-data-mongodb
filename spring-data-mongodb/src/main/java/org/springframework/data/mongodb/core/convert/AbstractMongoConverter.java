@@ -105,6 +105,11 @@ public abstract class AbstractMongoConverter implements MongoConverter, Initiali
 		return conversionService;
 	}
 
+	@Override
+	public Class<?> computeWriteTarget(Class<?> source) {
+		return conversions.getCustomWriteTarget(source).orElse(source);
+	}
+
 	/* (non-Javadoc)
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
